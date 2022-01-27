@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   }
 
   makeCall() {
-    this._networkService.makeCatFactCall().subscribe((res) => {
+    this._networkService.takeoneFact().subscribe((res) => {
       this.data = res['fact'];
     });
   }

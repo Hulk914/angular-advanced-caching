@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, timer } from 'rxjs';
-import { shareReplay, switchMap } from 'rxjs/operators';
+import { shareReplay, switchMap, take } from 'rxjs/operators';
 
 const CACHE_SIZE = 1;
 const REFRESH_INTERVAL = 10000;
@@ -24,6 +24,10 @@ export class NetworkService {
     }
 
     return this.cache$;
+  }
+
+  takeoneFact() {
+    return this.makeCatFactCall().pipe(take(1));
   }
 
   getCatFact() {
